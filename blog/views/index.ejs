@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <% blog.forEach(function(blog){ %>
+    <% blogs.forEach(function(blog){ %>
     <div class="blog">
         <div class="header-blog">
             <div class="date-create-blog">
@@ -21,11 +21,12 @@
             <h3><%= blog.title %></h3>
         </div>
         <div class="image-blog">
-            <img src="/<%= blog.image %>" >
+            <img height="200px" src="/img/<%= blog.image %>" >
         </div>
         <div class="content-blog">
             <%= blog.content %>
         </div>
+        <a href="/deleteBlog/<%= blog.id %>">delete</a>
     </div>
 <%}) %>
 </body>
