@@ -70,5 +70,29 @@ app.get('/deleteBlog/:idBlog', function(req,res){
    res.redirect('/')
 })
 
+app.get("/updateBlog/:idBlog",function(req,res){
+    const { idBlog }= req.params
+    let blogUp = {}
+    blogs.forEach(blog => {
+        if (blog.id == idBlog){
+            blogUp = blog
+        }
+    });
+    
+    res.render("blog/updateblog",{
+        blogUp : blogUp
+    })
+})
+app.post("/updateBlog/:idblog",function(req,res){
+    const { idBlog } = req.params
+    const { title , content } = req.body 
+    blogs.forEach(blog => {
+        if ( blog == idBlog){
+            blog.title = title,
+            blog.content = content
+        }
+    })
+    res.redirect("/")
+})
 
 app.listen(3000)
